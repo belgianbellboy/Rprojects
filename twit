@@ -1,0 +1,23 @@
+library(ROAuth) 
+library(twitteR)
+library(RCurl)
+library(httr)
+download.file(url="http://curl.haxx.se/ca/cacert.pem", destfile="cacert.pem")
+
+consumerKey <- "##insert consumer key on twitter app##"
+> consumerSecret <- "##insert secret key on twitter app##"
+> twitCred <- OAuthFactory$new(consumerKey=consumerKey,
++                              consumerSecret=consumerSecret,
++                              requestURL=requestURL,
++                              accessURL=accessURL,
++                              authURL=authURL)
+> twitCred$handshake(cainfo="cacert.pem")
+
+### You will get the following message in R studio. You need to find your pin on the twitter app page ###
+To enable the connection, please direct your web browser to: 
+https://api.twitter.com/oauth/authorize?oauth_token=KZ8BuOF2jw4XMAQJoZM3HAV5zkQwyOOA
+When complete, record the PIN given to you and provide it here: ### PROVIDE A PIN HERE ####
+
+##this function is the last step##
+setup_twitter_oauth("##Consumerkey##","##consumersecret##","##accesstoken##","##accesssecret##")
+## From here you can start using twitter package functions ##
